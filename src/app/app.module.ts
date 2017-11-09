@@ -3,17 +3,17 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { MyTeamsPage } from '../pages/my-teams/my-teams.page';
+import { TournamentsPage } from '../pages/pages';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage
+    MyTeamsPage,
+    TournamentsPage
   ],
   imports: [
     BrowserModule,
@@ -22,8 +22,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage
+    MyTeamsPage,
+    TournamentsPage
   ],
   providers: [
     StatusBar,
