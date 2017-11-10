@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyTeamsPage } from '../pages/my-teams/my-teams.page';
 import { TournamentsPage, TeamDetailPage, GamePage, TeamsPage, TeamHomePage, StandingsPage } from '../pages/pages';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TournamentsPage, TeamDetailPage, GamePage, TeamsPage, TeamHomePage, Sta
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

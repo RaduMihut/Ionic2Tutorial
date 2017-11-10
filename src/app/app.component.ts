@@ -4,9 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {MyTeamsPage, TournamentsPage} from '../pages/pages'
+import { EliteApi } from '../shared/shared';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [
+    EliteApi
+  ]  
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
