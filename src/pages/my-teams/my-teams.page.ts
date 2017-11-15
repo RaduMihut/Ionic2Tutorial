@@ -24,7 +24,6 @@ export class MyTeamsPage {
 
   ionViewDidEnter(){
     this.userSettings.getAllFavourites().then((items) => this.favourites = items);
-    console.log("the favourites are:" + this.favourites);
   }
 
   favouriteTapped($event, favourite){
