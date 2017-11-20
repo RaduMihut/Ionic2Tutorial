@@ -9,6 +9,7 @@ export class EliteApi{
 
     private baseUrl = 'https://elite-schedule-app-i2-r.firebaseio.com';
     currentTourney: any = {};
+    private tourneyData = {};
 
     constructor(private http: Http) { }
 
@@ -20,16 +21,30 @@ export class EliteApi{
         });
     }
 
-    getTournamentData(tourneyId): Observable<any>{
+    getTournamentData(tourneyId, forceRefresh: boolean = false): Observable<any>{
+        if(!forceRefresh && this.tourneyData[tourneyId]){
+            this.currentTourney = this.tourneyData[tourneyId];
+            console.log('**** no need to make a HTTP call, just return the data ****');
+            return Observable.of(this.currentTourney);
+        }
+
+        // don't have data jet
+        console.log(" *** about to make a HTTP call ***");
+
         return this.http
                 .get(`${this.baseUrl}/tournaments-data/${tourneyId}.json`)
                 .map((response: Response) => {
-                    this.currentTourney = response.json();
+                    this.tourneyData[tourneyId] = response.json();
+                    this.currentTourney = this.tourneyData[tourneyId];
                     return this.currentTourney;
                 });
     }
 
     getCurrentTourney(){
         return this.currentTourney;
-      }
+    }
+
+    refreshCurrentTourney(){
+        return this.getTournamentData(this.currentTourney.tournament.id, true);
+    }
 }
